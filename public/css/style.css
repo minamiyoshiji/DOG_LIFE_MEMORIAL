@@ -1,0 +1,53 @@
+:root {
+  --primary: #136FFF;
+  --dark: #111111;
+
+}
+body {
+  height:100%;
+}
+/* header */
+.navbar{
+  background-image: url('../img/texture171030IMGL0767.jpg.webp');
+  z-index: 100;
+}
+/* hero section */
+
+.helo {
+
+background-image: url('../img/aozora.jpeg');
+background-position: center;
+background-size: cover;
+background-attachment: fixed;
+background-repeat: repeat;
+position: relative;
+z-index: 2;
+}
+
+.helo::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+/* experience */
+.sum {
+  max-width: 540px;
+}
+
+.koumoku {
+text-align: left;
+ float: left;
+}
+
+.naiyou {
+text-align: right;
+}
+img {
+width: 400px;
+}
