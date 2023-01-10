@@ -65,6 +65,9 @@ Route::post('/dog_delete', [DogController::class,'dog_delete'])->name('dog_delet
 Route::group(['prefix' => 'edit'], function(){
 Route::post('/edit', [DogController::class,'show_edit'])->name('show_edit');
 Route::post('/dog_account', [DogController::class,'update'])->name('update');
+
+//検索機能
+Route::get('/dog_serach', [DogController::class,'dog_serach'])->name('dog_serach');
 });
 
 });

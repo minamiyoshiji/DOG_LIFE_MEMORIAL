@@ -22,6 +22,34 @@
         <div class="row">
           <div class="mx-autu text-center">
             <h2 class="display-5 mt-3">{{ $dog_name }}ちゃんのアルバム</h2>
+            <div class="search">
+                <form action="{{ route('dog_serach') }}" method="get">
+                    @csrf
+
+                    <div class="form-group">
+                      <div>
+                          <label for="">年齢
+                          <div>
+                              <input type="text" name="age" >
+                          </div>
+                          </label>
+                      </div>
+
+                      <div>
+                          <label for="">体重
+                          <div>
+                              <input type="text" name="weight" >
+                          </div>
+                          </label>
+                      </div>
+
+                        <div>
+                            <input type="submit" class="btn btn-primary mt-5 mb-5" value="検索">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
             <table>
               @foreach($dog_dates as $dog_date)
               <tr>

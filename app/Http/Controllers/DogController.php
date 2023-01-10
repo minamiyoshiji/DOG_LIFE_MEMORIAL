@@ -126,21 +126,10 @@ class DogController extends Controller
 
   //愛犬アルバム画面
   public function show_dog_album(Request $request) {
-    // $dog_date = new Dog_date();
     $dog_id = $request->input('dog_id');
     $dog_name = Dog::where('id', $dog_id)->value('dog_name');
     $dog_breed = Dog::where('id', $dog_id)->value('breed');
     $dog_dates = Dog_date::where('dog_id', $dog_id)->get();
-    // where('dog_id', $dog_id)->get();
-
-    // $aryTwitter = [];
-    // $aryTwitter['text'] = "$dog_name ちゃんは $dog_dates->age 歳、$dog_dates->weight kgで、1日の食事量は $dog_dates->food gです。";
-    // $aryTwitter['url'] = 'https://doglifememorial.com/';
-    // $aryTwitter['hashtags'] = '$dog_breed,体調管理,食事計算'; //省略可
-    //
-    // $twitter_url = 'https://twitter.com/share?';
-    // $twitter_url .= implode('&', array_map(function($key, $value){return $key.'='.$value;}, array_keys($aryTwitter), array_values($aryTwitter)));
-    // echo $twitter_url;
 
     return view('dog_album',
     [
@@ -150,6 +139,28 @@ class DogController extends Controller
       // 'twitter_url' => $twitter_url
     ]);
   }
+
+  //検索機能
+  public function dog_serach(Request $request)
+      {
+          //検索フォームに入力された値を取得
+          $age = $request->input('age');
+          $weight = $request->input('weight');
+
+          $query = dog_date::query();
+
+          if(!empty($age)) {
+              $query->where('age', 'LIKE', $age);
+          }
+
+          if(!empty($weight)) {
+              $query->where('weight', 'LIKE', $weight);
+          }
+
+          $items = $query->get();
+
+          return view('dog_serach', compact('items'));
+      }
 
   // デリート機能
   public function dog_delete(Request $request)
